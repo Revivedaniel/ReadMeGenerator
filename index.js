@@ -57,7 +57,7 @@ const questions = [
     },
 ];
 
-const readMeTemplate = (data) => `
+const readMeTemplate = (data, licenseBadge) => `
 # ${data.projectTitle}
 ${licenseBadge}
 ## Description
@@ -86,7 +86,7 @@ ${data.testInstruct}
 
 // TODO: Create a function to write README file
 function writeToFile(data) {
-    const licenseBadge = ""
+    let licenseBadge = ""
     switch (data.license) {
         case "Apache License 2.0":
             licenseBadge = "[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)"
@@ -107,7 +107,7 @@ function writeToFile(data) {
             break;
     }
 
-    const newReadMe = readMeTemplate(data)
+    const newReadMe = readMeTemplate(data, licenseBadge)
     fs.writeFile("./newReadMe.md", newReadMe,(err) => {
         err ? console.log(err) : console.log('Successfully created newReadMe.md!')
     })
