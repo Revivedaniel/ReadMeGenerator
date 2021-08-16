@@ -83,7 +83,7 @@ ${data.ContributionInstruct}
 ${data.testInstruct}
 ## Questions
 * [gitHubLink](https://github.com/${data.gitHubUser})
-* [email](${data.email})`
+* <a href="mailto:it-support@kth.se">${data.email}</a>`
 
 //This function validates the license used and then created the file using the readMeTemplate function
 function writeToFile(data) {
