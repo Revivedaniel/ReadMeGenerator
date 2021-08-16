@@ -24,3 +24,5 @@ To properly test this toll run the node index.js in the integrated console and t
 ## Questions
 * [gitHubLink](https://github.com/Revivedaniel)
 * <a href="mailto:it-support@kth.se">webdevstark@gmail.com</a>
+## Demo
+![DemoVideo](./assets/vids/readmegeneratordemo.gif)
