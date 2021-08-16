@@ -2,7 +2,7 @@
 const fs = require("fs")
 const inquirer = require("inquirer")
 
-// TODO: Create an array of questions for user input
+//Array of questions for inquirer
 const questions = [
     {
         type: "input",
@@ -43,6 +43,7 @@ const questions = [
         type: "list",
         name: "license",
         message: "What license do you want?",
+        //These are the options presented in the list
         choices: ["Apache License 2.0", "GNU GPLv3", "GNU GPLv2", "MIT", "ISC License", "No License"]
     },
     {
@@ -56,7 +57,7 @@ const questions = [
         message: "What is your email?",
     },
 ];
-
+//This function creates the readme using inline literals passed through from from the writeToFile function
 const readMeTemplate = (data, licenseBadge) => `
 # ${data.projectTitle}
 ${licenseBadge}
@@ -84,9 +85,10 @@ ${data.testInstruct}
 * [gitHubLink](https://github.com/${data.gitHubUser})
 * [email](${data.email})`
 
-// TODO: Create a function to write README file
+//This function validates the license used and then created the file using the readMeTemplate function
 function writeToFile(data) {
     let licenseBadge = ""
+    //This switch validates which badge to display at the top of the readme for each license
     switch (data.license) {
         case "Apache License 2.0":
             licenseBadge = "[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)"
@@ -106,14 +108,16 @@ function writeToFile(data) {
         default:
             break;
     }
-
+    //Using the readMeTemplate to create the document content
     const newReadMe = readMeTemplate(data, licenseBadge)
+    //using fs to create a file and passing through the response from the readMeTemplate function
     fs.writeFile("./newReadMe.md", newReadMe,(err) => {
+        //catching the error if any or notifying the user that the readme was created succesfully
         err ? console.log(err) : console.log('Successfully created newReadMe.md!')
     })
     
 }
-// TODO: Create a function to initialize app
+//A function to initialize the inquirer prompt
 function init() {
     inquirer.prompt(questions).then((data) => {
         writeToFile(data)
