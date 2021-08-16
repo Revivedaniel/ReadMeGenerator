@@ -11,8 +11,13 @@ const questions = [
     },
     {
         type: "input",
-        name: "projectDesc",
-        message: "Write a description for your project.",
+        name: "problem",
+        message: "What problem does this project solve?",
+    },
+    {
+        type: "input",
+        name: "projectMotivation",
+        message: "Why did you build this project",
     },
     {
         type: "input",
@@ -52,11 +57,39 @@ const questions = [
     },
 ];
 
+const readMeTemplate = `
+# ${data.projectTitle}
+## Description
+- ${data.problem}
+- ${data.projectMotivation}
+## Table of Contents
+- [Installation](#installation)
+- [Usage](#usage)
+- [Credits](#credits)
+- [License](#license)
+## Installation
+${data.installationInstruct}
+## Usage
+${data.projectUsage}
+## Credits
+${data.gitHubUser}
+## License
+${data.license}
+## How to Contribute
+${data.ContributionInstruct}
+## Tests
+${data.testInstruct}
+## Questions
+![gitHubLink](https://www.github.com/${data.gitHubUser})
+![email](${data.email})`
+
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {}
 
 // TODO: Create a function to initialize app
-function init() {}
+function init() {
+    inquirer.prompt(questions).then((data) => console.log(data))
+}
 
 // Function call to initialize app
 init();
