@@ -21,7 +21,7 @@ const questions = [
     },
     {
         type: "input",
-        name: "insallationInstruct",
+        name: "installationInstruct",
         message: "How do you install the project?",
     },
     {
@@ -121,6 +121,7 @@ function writeToFile(data) {
 function init() {
     inquirer.prompt(questions).then((data) => {
         writeToFile(data)
+
     })
 }
 
