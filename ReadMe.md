@@ -9,6 +9,14 @@
 - [Usage](#usage)
 - [Credits](#credits)
 - [License](#license)
+
+## Tech & Language used
+- Javascript ES6+
+- NodeJS
+
+## Packages
+- inquirer
+
 ## Installation
 undefined
 ## Usage
